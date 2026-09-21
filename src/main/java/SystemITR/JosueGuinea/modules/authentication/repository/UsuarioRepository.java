@@ -8,5 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long> {
+    //Método personalizado para buscar usuarios
     Optional<UsuarioEntity> findByUsername(String username);
 }

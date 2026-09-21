@@ -9,6 +9,9 @@ import SystemITR.JosueGuinea.modules.empleados.repository.EmpleadosRepository;
 import SystemITR.JosueGuinea.exceptions.DataNotFoundException;
 import SystemITR.JosueGuinea.exceptions.DuplicateDataException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,7 +24,6 @@ public class EmpleadosService {
 
     private final EmpleadosRepository repo;
     private final DepartamentosRepository repoDepartamento;
-
 
     public EmpleadosDTO crearEmpleado(EmpleadosDTO dto){
         //Verificando que el correo exista en la base de datos
@@ -93,5 +95,13 @@ public class EmpleadosService {
             return true; //Retornamos true si el valor se eliminó correctamente
         }
         return false; //Retornamos false si el valor no se encontró
+    }
+
+    public Page<EmpleadosDTO> obtenerTodo_Paginado(int page, int size){
+        //Crear las páginas con los valores de los parametros
+        Pageable pageable = PageRequest.of(page, size);
+        //Guardar los datos en la página
+        Page<EmpleadosEntity> pageEntity = repo.findAll(pageable);
+        return pageEntity.map(this::ConvertirADTO);
     }
 }

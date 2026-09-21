@@ -16,13 +16,13 @@ public class UsuarioEntity {
     @Column(name = "USUARIO_ID")
     private Long usuarioId;
 
-    @Column(name = "USERNAME", nullable = false, unique = true, length = 50)
+    @Column(name = "USERNAME")
     private String username;
 
-    @Column(name = "PASSWORD_HASH", nullable = false, length = 255)
-    private String passwordhash;
+    @Column(name = "PASSWORD_HASH")
+    private String passwordHash;
 
-    @Column(name = "ESTADO", nullable = false, length = 20)
+    @Column(name = "ESTADO")
     private String estado;
 
     @Column(name = "FECHA_CREACION")

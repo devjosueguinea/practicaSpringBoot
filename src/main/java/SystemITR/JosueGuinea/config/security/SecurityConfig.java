@@ -40,6 +40,12 @@ public class SecurityConfig {
 
                         //ENDPOINTS DE DEPARTAMENTOS
                         .requestMatchers(HttpMethod.GET, "/api/departamentos").authenticated()
+
+                        //ENDPOINT DE EMPLEADOS
+                        .requestMatchers(HttpMethod.GET, "/api/empleados").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/empleados").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/empleados/paginado").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/api/empleados").authenticated()
                         .anyRequest().authenticated())
                 .sessionManagement(sess -> sess
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
