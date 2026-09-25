@@ -61,6 +61,7 @@ public class AuthController {
                 //Posibles valores de SameSite (Strict, Lax, None)
                 .sameSite("None")
                 .maxAge(86400)
+                .domain("https://systemrh-5d827726e203.herokuapp.com/")
                 .build();
 
         response.addHeader("Set-Cookie", cookie.toString());
